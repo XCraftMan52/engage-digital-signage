@@ -7,17 +7,25 @@ export default async function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main>
+        <h1 className="text-4xl font-bold text-center py-4">Today's Events</h1>
         <div className="grid grid-cols-2 gap-4 p-4 ">
-            {events.map((event) => (
+          {events.filter((event) => new Date(event.endsOn) > new Date()).map((event) => (
               <div className="border p-4" key={event.id}>
-                <h2>{event.name}</h2>
-              <div dangerouslySetInnerHTML={{ __html: event.description }} />
-              <p>
-                {new Date(event.startsOn).toLocaleString()} -{" "}
-                {new Date(event.endsOn).toLocaleString()}
-              </p>
+                <h2 className="text-lg font-semibold">{event.name}</h2>
+                <p className="mt-2">
+                  {new Date(event.startsOn).toLocaleString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    hour12: true,
+                  })}
+                </p>
+              <div className="mt-2" dangerouslySetInnerHTML={{ __html: event.description }} />
                 {event.imageUrl && (
                   <Image
+                    className="mt-2"
                     src={event.imageUrl}
                     alt={event.name}
                     width={400}
