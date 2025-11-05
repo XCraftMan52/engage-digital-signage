@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { Event } from '../lib/engage';
+import Image from 'next/image';
 
 interface EventsDisplayProps {
   initialEvents: Event[];
@@ -78,6 +79,15 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
                         <span className="text-gray-800">{event.location}</span>
                       </div>
                     )} */}
+                     {event.imageUrl && (
+                  <Image
+                    className="mt-2"
+                    src={event.imageUrl}
+                    alt={event.name}
+                    width={400}
+                    height={300}
+                  />
+                )}
                     
                     {event.description && (
                       <p className="text-lg leading-relaxed text-gray-600 mt-4">
@@ -91,7 +101,7 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
                 <div className="flex flex-col items-center gap-4 mt-6 pt-6 border-t-2 border-gray-200">
                   <div className="bg-white p-4 rounded-xl shadow-lg">
                     <QRCodeCanvas
-                      value={`https://engage.campuslabs.com/event/${event.id}`}
+                      value={`https://riconnect.ric.edu/event/${event.id}`}
                       size={180}
                       level="H"
                     />
