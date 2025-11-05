@@ -8,7 +8,7 @@ export default async function Home() {
   ]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-600 via-white to-blue-800 text-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-grey-300 to-red-800 text-white flex flex-col">
       <Header />
       <EventsDisplay initialEvents={events} />
     </div>

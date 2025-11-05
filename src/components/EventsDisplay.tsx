@@ -47,7 +47,7 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
   };
 
   return (
-    <main className="flex-1 p-8 flex flex-col justify-center">
+    <main className="flex-1 p-8 flex flex-col justify-center max-h-screen ">
       {events.length === 0 ? (
         <div className="text-center p-16 bg-white/10 rounded-2xl">
           <p className="text-4xl">No events scheduled for today</p>
@@ -58,7 +58,7 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
             {currentEvents.map((event) => (
               <div 
                 key={event.id} 
-                className="bg-white/97 text-gray-800 rounded-3xl p-10 flex flex-col justify-between shadow-2xl min-h-[500px] transition-transform hover:scale-105"
+                className="bg-white/97 text-gray-800 rounded-3xl p-10 flex flex-col justify-between text-center shadow-2xl min-h-[500px] transition-transform hover:scale-105"
               >
                 <div>
                   <h2 className="text-4xl font-bold mb-6 text-indigo-600 leading-tight">
@@ -73,15 +73,15 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
                       </span>
                     </div>
                     
-                    {/* {event.location && (
-                      <div className="flex items-center gap-3 text-xl">
+                    {event.address && (
+                      <div className="flex items-center gap-3 text-xl font-semibold">
                         <span className="text-3xl">📍</span>
-                        <span className="text-gray-800">{event.location}</span>
+                        <span className="text-gray-800">{event.address.name}</span>
                       </div>
-                    )} */}
+                    )}
                      {event.imageUrl && (
                   <Image
-                    className="mt-2"
+                    className="mt-2 items-center rounded-xl mx-auto shadow-lg"
                     src={event.imageUrl}
                     alt={event.name}
                     width={400}
