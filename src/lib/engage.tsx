@@ -13,7 +13,7 @@ interface Address {
   instructions: string | null;
 }
 
-interface EventItem {
+export interface Event {
   id: number;
   submittedByOrganizationId: number;
   organizationIds: number[];
@@ -32,7 +32,7 @@ interface EngageApiEventParams {
   orderByField?: string;
 }
 
-export async function fetchTodaysEvents(): Promise<EventItem[]> {
+export async function fetchTodaysEvents(): Promise<Event[]> {
     const apiKey = process.env.ENGAGE_API_KEY;
 
     if (!apiKey) {
@@ -66,5 +66,5 @@ export async function fetchTodaysEvents(): Promise<EventItem[]> {
     }
 
     const data = await response.json();
-    return data.items as EventItem[];
+    return data.items as Event[];
   }
