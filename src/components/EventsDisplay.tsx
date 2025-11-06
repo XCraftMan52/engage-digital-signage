@@ -10,7 +10,7 @@ interface EventsDisplayProps {
 }
 
 export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
-  const [events] = useState<Event[]>(initialEvents);
+  const [events, setEvents] = useState<Event[]>(initialEvents);
   const [currentPage, setCurrentPage] = useState(0);
 
   const eventsPerPage = 2;
@@ -36,6 +36,20 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
     const timeUntilMidnight = tomorrow.getTime() - now.getTime();
     const refreshTimer = setTimeout(() => window.location.reload(), timeUntilMidnight);
     return () => clearTimeout(refreshTimer);
+  }, []);
+
+ useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch('/api/events');
+        if (!res.ok) throw new Error('Failed to fetch events');
+        const data: Event[] = await res.json();
+        setEvents(data);
+      } catch (err) {
+        console.error('Error fetching events:', err);
+      }
+    };
+    fetchEvents();
   }, []);
 
   const formatTime = (dateString: string): string => {
