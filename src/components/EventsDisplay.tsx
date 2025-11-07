@@ -68,11 +68,11 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-8 max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-2  gap-8 max-w-10xl mx-auto w-full">
             {currentEvents.map((event) => (
               <div 
                 key={event.id} 
-                className="bg-white/97 text-gray-800 rounded-3xl p-10 flex flex-col justify-between text-center shadow-2xl min-h-[500px] transition-transform hover:scale-105"
+                className="bg-white/97 text-gray-800 rounded-3xl p-10 mx-5 flex flex-col justify-between text-center shadow-2xl min-h-[500px] transition-transform hover:scale-105"
               >
                 <div>
                   <h2 className="text-4xl font-bold mb-6 text-indigo-600 leading-tight">
@@ -80,6 +80,8 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
                   </h2>
                   
                   <div className="space-y-4 mb-6">
+                    <div className='flex items-center gap-3 justify-center text-2xl font-semibold'>
+
                     <div className="flex items-center gap-3 text-2xl font-semibold">
                       <span className="text-3xl">🕐</span>
                       <span className="text-gray-800">
@@ -93,13 +95,14 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
                         <span className="text-gray-800">{event.address.name}</span>
                       </div>
                     )}
+                  </div>
                      {event.imageUrl && (
                   <Image
                     className="mt-2 items-center rounded-xl mx-auto shadow-lg"
                     src={event.imageUrl}
                     alt={event.name}
-                    width={400}
-                    height={300}
+                    width={600}
+                    height={400}
                   />
                 )}
                     
@@ -112,7 +115,7 @@ export default function EventsDisplay({ initialEvents }: EventsDisplayProps) {
                   </div>
                 </div>
                 
-                <div className="flex flex-col items-center gap-4 mt-6 pt-6 border-t-2 border-gray-200">
+                <div className="flex flex-col items-center gap-4 mt-2 pt-6 border-t-2 border-gray-200">
                   <div className="bg-white p-4 rounded-xl shadow-lg">
                     <QRCodeCanvas
                       value={`https://riconnect.ric.edu/event/${event.id}`}

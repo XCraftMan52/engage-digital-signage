@@ -15,8 +15,8 @@ export default function Header() {
       <div className="flex justify-between items-start max-w-7xl mx-auto">
         {/* Center - Title & Date */}
         <div className="flex-1">
-          <h1 className="text-6xl font-bold mb-2 drop-shadow-lg">Today's Events</h1>
-          <div className="text-xl opacity-95">
+          <h1 className="text-7xl font-bold mb-2 drop-shadow-lg">Today's Events</h1>
+          <div className="text-3xl opacity-95">
             <div className="font-medium">{formatDate(new Date())}</div>
           </div>
         </div>
